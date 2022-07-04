@@ -1,0 +1,19 @@
+class Solution:
+    def minSetSize(self, arr: List[int]) -> int:
+        count = defaultdict(int)
+        result = 0
+        counter = 0
+        for num in arr:
+            count[num] += 1
+        
+        answer = sorted(count.items(), key = lambda x: (x[1], x[0]), reverse = True)
+        
+        for key in answer:
+            if result < len(arr)//2:
+                result += key[1]
+                counter +=1
+      
+        
+    
+        return counter
+            
