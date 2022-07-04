@@ -1,0 +1,21 @@
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        mid = len(nums)//2
+        part1 = nums[:mid]
+        part2 = nums[mid:]
+        part2.sort(reverse=True)
+        
+        result = []
+        answer = []
+        
+        for i in range(mid):
+            
+            result.append((part1[i], part2[i]))
+        
+        for num in result:
+            answer.append(num[0] + num[1])
+        
+        answer.sort(reverse = True)
+        
+        return answer[0]
