@@ -1,0 +1,32 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        answer = []
+        
+        for item in s:
+            if item == '(' or item == '{' or item == '[':
+                stack.append(item)
+            elif item == ')' or item == '}' or item == ']':
+                if stack:
+                    first = stack.pop()
+                    if first == '(' and item == ')':
+                        answer.append(True)
+                    elif first == '{' and item == '}':
+                        answer.append(True) 
+                    elif first == '[' and item == ']':
+                        answer.append(True) 
+                    else:
+                        answer.append(False)
+                else:
+                    answer.append(False)
+            
+        
+        if stack:
+            return False
+        elif False in answer:
+            return False
+        else:
+            return True
+        
+        
+        
