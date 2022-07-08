@@ -1,0 +1,34 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+        
+        for item in tokens:
+            if item.lstrip("-").isdigit():
+                stack.append(int(item))
+            else:
+                if len(stack) >= 2:
+                    last = stack.pop()
+                    first = stack.pop()
+                    
+                    if item == '*':
+                        result = first*last
+                        stack.append(result)
+                    elif item == '+':
+                        result = first + last
+                        stack.append(result)
+                    elif item == '-':
+                        result = first - last
+                        stack.append(result)
+                    
+                    elif item == '/':
+                        if last != 0:
+                            result = int(first/last)
+                        elif first == 0 and last == 0:
+                            result = 0
+                        else:
+                            result = int(last / first)
+                        stack.append(result)
+        answer = stack.pop()
+        return answer
+                    
+                    
