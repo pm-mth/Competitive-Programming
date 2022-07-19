@@ -1,0 +1,14 @@
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        
+        def solve(n):
+            if n <= 0:
+                return False
+            elif n % 4 == 0:
+                return solve(n//4)
+            elif n == 1:
+                return True
+        
+            return False
+        return solve(n)
+        
