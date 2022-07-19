@@ -1,0 +1,31 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack = []
+        newItem = ""
+            
+        for item in s:
+            if item != ']':
+                stack.append(item)
+
+            elif stack and item == ']':
+                newItem = stack.pop()
+                
+                while stack[-1] != '[':
+                    newItem = stack.pop() + newItem
+                stack.pop()
+                k = ""
+                while stack and stack[-1].isdigit():
+                    k = stack.pop() + k
+                stack.append(int(k) * newItem)
+        
+        result = ""
+        for item in stack:
+            result += item
+
+        return result
+                
+                
+                
+                        
+            
+        
