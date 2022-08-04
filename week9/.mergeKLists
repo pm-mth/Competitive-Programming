@@ -1,0 +1,27 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        newlist = []
+        
+        for i in range(len(lists)):
+            node = lists[i]
+            while node:
+                newlist.append(node.val)
+                node = node.next
+        heapq.heapify(newlist)
+        
+        dummy = ListNode()
+        node = dummy
+        for i in range(len(newlist)):
+            newNode = ListNode(heapq.heappop(newlist))
+            node.next = newNode
+            node = node.next
+        return dummy.next
+            
+        
+       
+        
