@@ -1,0 +1,37 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+         
+        count = defaultdict(int)
+        answer = []
+        values = []
+        interval = []
+        
+        for num in nums:
+            count[num] += 1
+        
+        # values = list(count.values())
+        for val in count.values():
+            values.append(-1*(val))
+        heapq.heapify(values)
+        
+        for i in range(k):
+            val = heapq.heappop(values)
+            interval.append(val)
+        
+        # print(interval)
+        # while values and len(values) > k:
+        #     heapq.heappop(values)
+            
+        for key, val in count.items(): 
+            if -1*val in interval: 
+                answer.append(key)
+        
+        
+        return answer
+       
+#         result = sorted(count.items(), key=lambda x: (x[1], x[0]), reverse = True)
+#         # count.sort(key = lambda x: x = values)
+#         for i in range(k):
+#             answer.append(result[i][0])
+        
+    
