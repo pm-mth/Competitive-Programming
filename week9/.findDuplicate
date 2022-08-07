@@ -1,0 +1,8 @@
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        heapq.heapify(nums)
+        while nums:
+            answer = heapq.heappop(nums)
+            if answer == nums[0]:
+                return answer
+        
