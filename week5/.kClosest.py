@@ -2,6 +2,7 @@ class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         result = []
         result = sorted(points, key = lambda x: x[0]**2 + x[1]**2)
+        return result[:k]
 #         for i in range(len(points)):
         
 #             answer=pow(points[i][0], 2) + pow(points[i][1], 2)
@@ -27,5 +28,5 @@ class Solution:
         
         
             
-        return result[:k]
+    
         
