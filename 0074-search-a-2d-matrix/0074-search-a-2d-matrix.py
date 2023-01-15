@@ -3,22 +3,29 @@ class Solution:
         row = len(matrix)
         col = len(matrix[0])
         
-        left, right = 0, (row*col) -1
-        while left <= right:
-            mid = left + (right - left)//2
-            
-            #finding the row and col
-            r = mid//col
-            c = mid%col
-            
-            #searching for the target
-            if matrix[r][c] == target:
-                return True
-            elif matrix[r][c] > target:
-                right = mid - 1
-            else:
-                left = mid + 1
+        for r in range(row):
+            if matrix[r][-1] >= target:
+                for c in range(col):
+                    if matrix[r][c] == target:
+                        return True
         return False
+        
+#         left, right = 0, (row*col) -1
+#         while left <= right:
+#             mid = left + (right - left)//2
+            
+#             #finding the row and col
+#             r = mid//col
+#             c = mid%col
+            
+#             #searching for the target
+#             if matrix[r][c] == target:
+#                 return True
+#             elif matrix[r][c] > target:
+#                 right = mid - 1
+#             else:
+#                 left = mid + 1
+#         return False
             
             
         
