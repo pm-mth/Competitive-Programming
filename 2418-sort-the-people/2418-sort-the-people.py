@@ -9,8 +9,9 @@ class Solution:
                     heights[j], heights[j+1] = heights[j+1], heights[j]
                     names[j],  names[j+1] = names[j+1], names[j]
                     swap += 1
-                # if swap == 0:
-                #     index = len(names)
+            if swap == 0:
+                index = len(names)
+            
             index += 1
         return names
                     
