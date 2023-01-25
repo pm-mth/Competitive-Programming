@@ -4,13 +4,13 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         
-        write = 0
-        read = 0
+        left, right = 0, 0
+        
+        for right in range(len(nums)):
+            if nums[right] != 0:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+            
+        
 
-        while read < len(nums):
-            if nums[read] != 0:
-                nums[write], nums[read] = nums[read], nums[write]
-
-                write += 1
-            read += 1
         
