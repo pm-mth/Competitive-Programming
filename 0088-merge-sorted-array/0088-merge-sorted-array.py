@@ -4,22 +4,28 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         
         """
-        nums1_ptr = m - 1
-        nums2_ptr = n - 1
-        merge_ptr = m + n - 1
-        while nums1_ptr >= 0 and nums2_ptr >= 0 and merge_ptr >= 0:
-            if nums1[nums1_ptr] > nums2[nums2_ptr]:
-                nums1[merge_ptr] = nums1[nums1_ptr]
-                nums1_ptr -= 1
+        
+        write = n + m - 1
+        ptr1 = m - 1
+        ptr2 = n -1
+        
+       
+        while ptr1 >= 0 and ptr2 >= 0 and write >= 0:
+            if nums1[ptr1] > nums2[ptr2]:
+                nums1[write] = nums1[ptr1]
+                ptr1 -= 1
             else:
-                nums1[merge_ptr] = nums2[nums2_ptr]
-                nums2_ptr -= 1
-            merge_ptr -= 1
-            
-        while nums2_ptr >=0:
-            nums1[merge_ptr] = nums2[nums2_ptr]
-            nums2_ptr -= 1
-            merge_ptr -= 1
+                nums1[write] = nums2[ptr2]
+                ptr2 -= 1
+            write -= 1
+       
+        while ptr2 >= 0:
+            nums1[write] = nums2[ptr2]
+            write -= 1
+            ptr2 -= 1
+        
+        
+ 
             
             
             
