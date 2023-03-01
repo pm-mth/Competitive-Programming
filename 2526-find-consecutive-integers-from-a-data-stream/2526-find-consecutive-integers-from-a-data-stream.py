@@ -1,31 +1,31 @@
 class DataStream:
 
     def __init__(self, value: int, k: int):
-        self.DataStream = []
+        self.dataStream = deque()
         self.value = value
         self.k = k
-        self.diff_value_ptr = -1
+        self.track = 0
+        
+        
         
 
     def consec(self, num: int) -> bool:
-        self.DataStream.append(num)
-        length = len(self.DataStream)
+        if len(self.dataStream) == self.k:
+            self.dataStream.popleft()
+            self.track -= 1 
+            
+        self.dataStream.append(num)
         
         if num != self.value:
-            self.diff_value_ptr = length 
-
-        if length < self.k:
-            return False
-      
-        if self.diff_value_ptr == -1:
-            return True 
+            self.track = len(self.dataStream)
+            
+        if self.track <= 0 and len(self.dataStream) == self.k:
+            return True
         
-        if (length - self.diff_value_ptr) < self.k :
-            return False
-
-        return True
+        return False
         
-
+           
+        
 
 # Your DataStream object will be instantiated and called as such:
 # obj = DataStream(value, k)
