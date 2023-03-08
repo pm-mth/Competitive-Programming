@@ -6,51 +6,47 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        left , right = float(-inf), float(inf)
         
-        def inOrderTraversal(root, answer):
-            if not root:
-                return 
+        
+        def validate(l, r, node):
+            if not node:
+                return True
             
-            inOrderTraversal(root.left, answer)
-            answer.append(root.val)
-            inOrderTraversal(root.right, answer)
-            
-            return answer
-        
-        
-        answer = inOrderTraversal(root, [])
-        maximum = answer[0]
-        for i in range(1, len(answer)):
-            if answer[i] <= maximum:
+            if node.val <= l or node.val >= r:
                 return False
-            maximum= max(maximum, answer[i])
+        
+            left = validate(l, min(r, node.val), node.left)
+            right = validate(max(l, node.val), r, node.right)
+  
+            
+            return left and right
+        
+        return validate(left,  right, root)
+            
+            
+            
+            
+        
+        #def inOrderTraversal(root, answer):
+#             if not root:
+#                 return 
+            
+#             inOrderTraversal(root.left, answer)
+#             answer.append(root.val)
+#             inOrderTraversal(root.right, answer)
+            
+#             return answer
+        
+        
+#         answer = inOrderTraversal(root, [])
+#         maximum = answer[0]
+#         for i in range(1, len(answer)):
+#             if answer[i] <= maximum:
+#                 return False
+#             maximum= max(maximum, answer[i])
       
-        return True
-        
-        
-        
-#         if not root.right and not root.left:
-#             return True
-        
-#         if not root.left and root.right:
-#             if root.val < root.right.val:
-#                 right = self.isValidBST(root.right)
-#             else:
-#                 return False
-        
-#         elif not root.right and root.left:
-#             if root.left.val < root.val:
-#                 left = self.isValidBST(root.left)
-#             else:
-#                 return False
-               
-#         elif root.left.val < root.val and root.val < root.right.val:
-#             left = self.isValidBST(root.left)
-#             right = self.isValidBST(root.right)
-#         else:
-#             return False
-        
-#         return left and right
+#         return True
         
         
         
