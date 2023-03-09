@@ -12,8 +12,8 @@ class Solution:
                 _max = max(child)
                 res = min(_max,res)
                 return
-            
-            
+            if max(child) >= res:
+                return            
             for j in range(k):
                 if child[j] + cookies[i] < res:
                     child[j] += cookies[i]
