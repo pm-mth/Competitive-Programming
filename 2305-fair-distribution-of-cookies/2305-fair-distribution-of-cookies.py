@@ -15,10 +15,9 @@ class Solution:
             if max(child) >= res:
                 return            
             for j in range(k):
-                if child[j] + cookies[i] < res:
-                    child[j] += cookies[i]
-                    findOptimal(i + 1, child)
-                    child[j] -= cookies[i]
+                child[j] += cookies[i]
+                findOptimal(i + 1, child)
+                child[j] -= cookies[i]
 
         cookies.sort(reverse = True)
         findOptimal(0, child)
