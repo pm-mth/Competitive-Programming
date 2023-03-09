@@ -20,7 +20,7 @@ class Solution:
                     findOptimal(i + 1, child)
                     child[j] -= cookies[i]
 
-        
+        cookies.sort(reverse = True)
         findOptimal(0, child)
         return res
         
