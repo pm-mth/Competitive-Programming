@@ -22,8 +22,9 @@ class Solution:
         return self.conquer(left, right)
     
     def conquer(self, left, right):
+        acc = 0
         for i in range(len(right)):
-            acc = self.binarySearch(-1, len(left), right[i], left)
+            acc = self.binarySearch(acc - 1, len(left), right[i], left)
             self.count += acc
         
         p1, p2 = 0, 0
