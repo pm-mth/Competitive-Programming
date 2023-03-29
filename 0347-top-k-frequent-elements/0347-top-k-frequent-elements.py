@@ -16,7 +16,8 @@ class Solution:
     def quickSort(self,l, r, arr):
         if l >= r:
             return 
-        pivot = l + (r - l)//2
+        mid = l + (r - l)//2
+        pivot = self.findMedian(l, r, mid, arr)
         w = l
         for r in range(l, r + 1):
             if arr[r][1] <= arr[pivot][1]:
@@ -31,7 +32,12 @@ class Solution:
         arr[w], arr[pivot] =  arr[pivot], arr[w]
         self.quickSort(l, w - 1, arr)
         self.quickSort(w + 1, r, arr)
-        
+    def findMedian(self,a, b, c, arr):
+        if arr[a][1] < arr[b][1] < arr[c][1] or arr[a][1] > arr[b][1] > arr[c][1]:
+            return b
+        if arr[a][1] < arr[c][1] < arr[b][1] or arr[a][1] > arr[c][1] > arr[b][1]:  
+            return c
+        return a
             
         
         
