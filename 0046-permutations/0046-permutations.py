@@ -1,21 +1,21 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
-        count = Counter(nums)
         answer = []
-        
+        used = 0
         def findPermute(cur):
+            nonlocal used
             if len(cur) == len(nums):
-                answer.append(deepcopy(cur))
+                answer.append(cur.copy())
                 return 
             
             for i in range(len(nums)):
-                if count[nums[i]] != 0:
+                if used & (1 << i) == 0:
+                    used |= (1 << i)
                     cur.append(nums[i])
-                    count[nums[i]] -= 1
                     findPermute(cur)
-                    count[nums[i]] += 1
                     cur.pop()
+                    used ^= (1 << i)
         findPermute([])
         return answer
                     
