@@ -1,0 +1,17 @@
+from collections import defaultdict
+n  = int(input())
+matrix = []
+for _ in range(n):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+graph = defaultdict(list)
+for i in range(n):
+    for j in range(n):
+        if matrix[i][j] == 1:
+            graph[i + 1].append(j + 1)
+            
+for key in graph.keys():
+    print(len(graph[key]), *graph[key])
+
+
